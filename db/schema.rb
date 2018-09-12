@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_12_121659) do
+ActiveRecord::Schema.define(version: 2018_09_12_124108) do
 
   create_table "associations", force: :cascade do |t|
     t.integer "parent_id"

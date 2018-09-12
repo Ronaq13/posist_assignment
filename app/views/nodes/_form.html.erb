@@ -1,0 +1,28 @@
+<%= form_with(model: node, local: true) do |form| %>
+  <% if node.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(node.errors.count, "error") %> prohibited this node from being saved:</h2>
+
+      <ul>
+      <% node.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= form.label "Owner ID" %>
+    <%= form.text_field :owner_id, class: "form-control" %>
+    <br>
+    <%= form.label :owner_name %>
+    <%= form.text_field :owner_name, class: "form-control" %>
+    <br>
+    <%= form.label :value %>
+    <%= form.text_field :value, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
