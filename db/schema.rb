@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_12_124108) do
+ActiveRecord::Schema.define(version: 2018_09_12_135731) do
 
   create_table "associations", force: :cascade do |t|
     t.integer "parent_id"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2018_09_12_124108) do
     t.text "data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "owner_id"
+    t.index ["owner_id"], name: "index_nodes_on_owner_id"
   end
 
   create_table "owners", force: :cascade do |t|
