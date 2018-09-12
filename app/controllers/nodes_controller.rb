@@ -12,6 +12,9 @@ class NodesController < ApplicationController
   # GET /nodes/1
   # GET /nodes/1.json
   def show
+    data_first = @node.data.gsub('NHhLdDMw', '')
+    data_second = data_first.gsub('QS9MMkwwK1RFZjMyOFJNRXRkZ2VJY1o3aGtwaC9Wb0wv', '')
+    @data = eval(data_second)
   end
 
   # GET /nodes/new
@@ -33,7 +36,7 @@ class NodesController < ApplicationController
     }
 
 
-    data = "NHhLdDMw" +  data_hash.values.join + "QS9MMkwwK1RFZjMyOFJNRXRkZ2VJY1o3aGtwaC9Wb0wv"
+    data = data_hash.to_s
     @node = Node.new(data: data.gsub!(/\s+/, ''))
 
     respond_to do |format|
@@ -50,8 +53,16 @@ class NodesController < ApplicationController
   # PATCH/PUT /nodes/1
   # PATCH/PUT /nodes/1.json
   def update
+    data_hash = {
+      owner_id: node_params['owner_id'],
+      owner_name: node_params['owner_name'],
+      value: node_params['value']
+    }
+
+
+    data =  data_hash.to_s
     respond_to do |format|
-      if @node.update(node_params)
+      if @node.update(data: data)
         format.html { redirect_to @node, notice: 'Node was successfully updated.' }
         format.json { render :show, status: :ok, location: @node }
       else

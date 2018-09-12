@@ -1,9 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Data:</strong>
-  <%= @node.data %>
-</p>
+<div class="container">
+  <div>
+    <h4>Owner ID: <%= @data[:owner_id] %></h4>
+    <h4>Owner Name: <%= @data[:owner_name] %></h4>
+    <h4>Value: <%= @data[:value] %></h4>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_node_path(@node) %> |
 <%= link_to 'Back', nodes_path %>
